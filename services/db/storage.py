@@ -53,7 +53,7 @@ class Storage:
             stmt = stmt.limit(count)
         result = await self._db.execute(stmt)
         users = result.scalars().all()
-        if count == 1 and models:
+        if count == 1 and users:
             return users[0].to_domain()
         return [user.to_domain() for user in users]
 
